@@ -2,7 +2,6 @@
 
 std::vector<int> Roll(int _num, int _sides)
 {
-    srand(time(NULL));
     std::vector<int> rolls;
     for(int i = 0; i<_num; i++)
     {
@@ -22,6 +21,26 @@ int RollSum(int _num, int _sides)
     {
         total += num;
     }
+    
+    Print(rolls);
 
     return total;
+}
+
+void Print(std::vector<int> rolls)
+{
+    printf("[");
+    for(int i = 0; i<rolls.size(); i++)
+    {
+        printf("%i", rolls[i]);
+        if(i==rolls.size()-1)
+        {
+            printf("]");
+        }
+        else
+        {
+            printf(", ");
+        }
+    }
+    printf("\n");
 }
