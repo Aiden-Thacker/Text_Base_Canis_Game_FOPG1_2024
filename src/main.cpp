@@ -7,9 +7,11 @@
 
 #include "Room.hpp"
 #include "Entity.hpp"
+#include "Dice.hpp"
 
 int main(int argc, char* argv[])
 {
+    srand(time(NULL));
     Room room;
     room.Load("assets/level_1.map");
 
