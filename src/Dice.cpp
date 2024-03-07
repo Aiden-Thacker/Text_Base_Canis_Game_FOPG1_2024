@@ -1,5 +1,6 @@
 #include "Dice.hpp"
 
+//Roll _num dice with _sides sides and get back a vector of the dice results
 std::vector<int> Roll(int _num, int _sides)
 {
     std::vector<int> rolls;
@@ -12,6 +13,7 @@ std::vector<int> Roll(int _num, int _sides)
 
 }
 
+//Roll _num dice with _sides sides and get back the total of all the rolls
 int RollSum(int _num, int _sides)
 {
     std::vector rolls = Roll(_num,_sides);
