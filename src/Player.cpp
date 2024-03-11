@@ -40,6 +40,13 @@ void Player::Update()
         room->ClearLocation(m_position + direction);
     }
 
+    //check for enemy
+    if (room->GetLocation(m_position + direction) == 'E')
+    {
+        m_enemyCount++;
+        room->ClearLocation(m_position + direction);
+    }
+
     // check for lock
     if (room->GetLocation(m_position + direction) == 'L')
     {
@@ -48,6 +55,12 @@ void Player::Update()
         
         m_keyCount--;
         room->OpenDoor(m_position + direction);
+
+        if (m_enemyCount <= 0)
+            return;
+        m_enemyCount--;
+        room->OpenDoor(m_position + direction);
+            
     }
 
     // check for door
