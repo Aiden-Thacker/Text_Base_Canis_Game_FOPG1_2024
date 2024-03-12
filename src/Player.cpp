@@ -57,7 +57,9 @@ void Player::Update()
         room->OpenDoor(m_position + direction);
 
         if (m_enemyCount <= 0)
+        {
             return;
+        }
         m_enemyCount--;
         room->OpenDoor(m_position + direction);
             
