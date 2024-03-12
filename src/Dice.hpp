@@ -9,5 +9,6 @@
 extern std::vector<int> Roll(int _num, int _sides);
 
 extern int RollSum(int _num, int _sides);
+extern int RollIndex(int _len);
 
 extern void Print(std::vector<int>);

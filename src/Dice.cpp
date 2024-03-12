@@ -29,6 +29,14 @@ int RollSum(int _num, int _sides)
     return total;
 }
 
+//Roll an index in a list
+int RollIndex(int _len)
+{
+    int rolls = (rand()%_len);
+    //printf("%i\n", rolls);
+    return rolls;
+}
+
 void Print(std::vector<int> rolls)
 {
     printf("[");
