@@ -7,3 +7,5 @@ struct Stats
     float dexterity = 10.0f;
     float constitution = 10.0f;
 };
+
+extern void playerStats(const Stats&  _stats);

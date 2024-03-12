@@ -22,6 +22,12 @@ void Player::Update()
           directionInput != 'd')
     {
         directionInput = request_char(instruction.c_str());
+         // Kill player
+        if (directionInput == 'K')
+        {
+            room->KillPlayer();
+            return;
+        }    
     }
 
     if (directionInput == 'w')
