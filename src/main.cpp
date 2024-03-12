@@ -11,7 +11,7 @@
 int main(int argc, char* argv[])
 {
     Room room;
-    room.Load("assets/level_1.map");
+    room.Load("assets/maps/level_1_3.map");
 
     while(true)
     {
