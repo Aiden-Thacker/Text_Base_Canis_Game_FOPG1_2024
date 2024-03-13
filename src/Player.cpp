@@ -54,15 +54,7 @@ void Player::Update()
             return;
         
         m_keyCount--;
-        room->OpenDoor(m_position + direction);
-
-        if (m_enemyCount <= 0)
-        {
-            return;
-        }
-        m_enemyCount--;
-        room->OpenDoor(m_position + direction);
-            
+        room->OpenDoor(m_position + direction);     
     }
 
     // check for door
@@ -74,4 +66,12 @@ void Player::Update()
     // try to move
     if (room->GetLocation(m_position + direction) == ' ')
         m_position += direction;
+
+    //check if enemy count is none (if enemies are dead)
+    if (m_enemyCount <= 0)
+        {
+            room->Unlock();
+        }
+        m_enemyCount--;
+        room->OpenDoor(m_position + direction);
 }

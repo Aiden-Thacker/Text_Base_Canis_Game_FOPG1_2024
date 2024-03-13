@@ -12,6 +12,8 @@ public:
     void Load(std::string _path);
     void Draw();
     void Update();
+    void Unlock();
+
 
     bool StillPlaying() { return true; }
 
@@ -20,6 +22,7 @@ public:
     const std::vector<std::vector<char>>& GetMap() { return m_map; }
     char GetLocation(Vector2D _pos);
     void ClearLocation(Vector2D _pos);
+    void SetLocation(Vector2D _pos, char newChar);
     void OpenDoor(Vector2D _pos);
 private:
     Entity *m_player = nullptr;

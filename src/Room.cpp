@@ -143,6 +143,17 @@ void Room::ClearLocation(Vector2D _pos)
     m_map[_pos.y][_pos.x] = ' ';
 }
 
+void Room::SetLocation(Vector2D _pos, char newChar)
+{
+    if (_pos.y >= m_map.size())
+        return;
+    
+    if (_pos.x >= m_map[_pos.y].size())
+        return;
+    
+    m_map[_pos.y][_pos.x] = newChar;
+}
+
 void Room::OpenDoor(Vector2D _pos)
 {
     for(int i = 0; i < m_doors.size(); i++)
@@ -150,6 +161,23 @@ void Room::OpenDoor(Vector2D _pos)
         if (m_doors[i].pos == _pos)
         {
             Load(m_doors[i].path);
+        }
+    }
+}
+
+void Room::Unlock()
+{
+    for (int y = 0; y < m_map.size(); y++)
+    {
+        for (int x = 0; x < m_map[y].size(); x++)
+        {
+            if (m_map[y][x] == 'L')
+            {
+                Vector2D _pos;
+                _pos.x = x;
+                _pos.y = y;
+                SetLocation(_pos,'D');
+            }
         }
     }
 }
