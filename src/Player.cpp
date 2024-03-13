@@ -64,5 +64,8 @@ void Player::Update()
 
     // try to move
     if (room->GetLocation(m_position + direction) == ' ')
+      {
         m_position += direction;
+        Printstats(stats);
+      }  
 }
