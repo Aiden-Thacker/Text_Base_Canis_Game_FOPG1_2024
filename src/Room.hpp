@@ -12,8 +12,9 @@ public:
     void Load(std::string _path);
     void Draw();
     void Update();
+    void KillPlayer();
 
-    bool StillPlaying() { return true; }
+    bool StillPlaying() { return MaybePlaying; }
 
     Entity& GetPlayer() { return *m_player; }
     std::vector<Entity*>& GetMonsters() { return m_monsters; }
@@ -26,4 +27,5 @@ private:
     std::vector<Entity*> m_monsters;
     std::vector<std::vector<char>> m_map;
     std::vector<Door> m_doors;
+    bool MaybePlaying = true;
 };

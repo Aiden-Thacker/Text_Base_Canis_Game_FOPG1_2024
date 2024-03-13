@@ -117,6 +117,11 @@ void Room::Draw()
     }
 }
 
+void Room::KillPlayer()
+{
+    MaybePlaying = false;
+}
+
 char Room::GetLocation(Vector2D _pos)
 {
     if (_pos.y >= m_map.size())
