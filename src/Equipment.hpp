@@ -9,5 +9,6 @@ private:
 public:
     int level;
     int rarity;
+    std::string name;
 };
 
