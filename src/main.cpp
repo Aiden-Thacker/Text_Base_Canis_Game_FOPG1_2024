@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
     Room room;
     room.Load("assets/maps/level_1_" + std::to_string(1 + rand() % 3) + ".map");
 
-    while(true)
+    while(room.StillPlaying() == true)
     {
         room.Update();
     }

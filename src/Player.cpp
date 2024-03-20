@@ -22,6 +22,12 @@ void Player::Update()
           directionInput != 'd')
     {
         directionInput = request_char(instruction.c_str());
+         // Kill player
+        if (directionInput == 'K')
+        {
+            room->KillPlayer();
+            return;
+        }    
     }
 
     if (directionInput == 'w')
@@ -58,5 +64,8 @@ void Player::Update()
 
     // try to move
     if (room->GetLocation(m_position + direction) == ' ')
+      {
         m_position += direction;
+        Printstats(stats);
+      }  
 }
