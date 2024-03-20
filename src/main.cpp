@@ -9,11 +9,13 @@
 #include "Entity.hpp"
 #include "Dice.hpp"
 
+#include <string>
+
 int main(int argc, char* argv[])
 {
     srand(time(NULL));
     Room room;
-    room.Load("assets/level_1.map");
+    room.Load("assets/maps/level_1_" + std::to_string(1 + rand() % 3) + ".map");
 
     while(room.StillPlaying() == true)
     {
