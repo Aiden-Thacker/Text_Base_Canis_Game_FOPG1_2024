@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.hpp"
+#include "Stats.hpp"
 #include "Character.hpp"
 
 class Player : public Character

@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
     Room room;
     room.Load("assets/level_1.map");
 
-    while(true)
+    while(room.StillPlaying() == true)
     {
         room.Update();
     }
