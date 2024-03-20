@@ -1,8 +1,9 @@
 #pragma once
 
 #include "Entity.hpp"
+#include "Character.hpp"
 
-class Player : public Entity
+class Player : public Character
 {
 public:
     void Start();
