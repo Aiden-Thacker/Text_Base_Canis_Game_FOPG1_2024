@@ -5,6 +5,7 @@
 
 #include "fogpi/fogpi.hpp"
 #include "fogpi/Math.hpp"
+#include "Stats.hpp"
 
 extern std::vector<int> Roll(int _num, int _sides);
 

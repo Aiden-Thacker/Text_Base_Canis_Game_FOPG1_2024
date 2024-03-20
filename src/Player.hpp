@@ -2,8 +2,9 @@
 
 #include "Entity.hpp"
 #include "Stats.hpp"
+#include "Character.hpp"
 
-class Player : public Entity
+class Player : public Character
 {
 public:
     void Start();
