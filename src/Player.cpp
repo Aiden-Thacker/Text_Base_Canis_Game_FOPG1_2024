@@ -2,6 +2,7 @@
 #include "fogpi/fogpi.hpp"
 #include "fogpi/Math.hpp"
 #include "Room.hpp"
+#include "Combat.hpp"
 #include <string>
 
 void Player::Start()
@@ -11,6 +12,11 @@ void Player::Start()
 
 void Player::Update()
 {
+    if (m_enemy == nullptr)
+                    m_enemy = new Enemy();
+                
+                m_enemy->Init(4, 4);
+                m_enemy->Start();
     // direction
     std::string instruction = "wasd and Enter to move";
     char directionInput = 'r';
@@ -28,6 +34,10 @@ void Player::Update()
             room->KillPlayer();
             return;
         }    
+        if (directionInput == 'C')
+        {
+            StartCombat(this, m_enemy);
+        }  
     }
 
     if (directionInput == 'w')
@@ -66,6 +76,6 @@ void Player::Update()
     if (room->GetLocation(m_position + direction) == ' ')
       {
         m_position += direction;
-        Printstats(stats);
+        //Printstats(stats);
       }  
 }

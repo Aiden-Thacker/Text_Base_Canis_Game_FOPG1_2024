@@ -9,6 +9,7 @@ struct Stats
     int dexterity = 10;
     int constitution = 10;
     int defense = 10;
+    int block = 0;
 
 };
 

@@ -11,7 +11,7 @@ class Character : public Entity
 {
     public:
     Stats stats;
-    float health = stats.maxHealth;
+    int health = stats.maxHealth;
     Shield shield;
     Weapon weapon;
     Armor armor;

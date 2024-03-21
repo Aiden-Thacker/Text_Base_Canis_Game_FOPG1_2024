@@ -8,14 +8,6 @@ private:
 
 public:
     int defense;
-    Armor(/* args */);
-    ~Armor();
 };
 
-Armor::Armor(/* args */)
-{
-}
 
-Armor::~Armor()
-{
-}
