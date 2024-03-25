@@ -167,17 +167,24 @@ void Room::OpenDoor(Vector2D _pos)
 
 void Room::Unlock()
 {
+    int m_enemyCount = 0;
+
     for (int y = 0; y < m_map.size(); y++)
     {
         for (int x = 0; x < m_map[y].size(); x++)
         {
-            if (m_map[y][x] == 'L')
+            if (m_map[y][x] == 'E')
             {
-                Vector2D _pos;
-                _pos.x = x;
-                _pos.y = y;
-                SetLocation(_pos,'D');
+                m_map[y][x] == 'L';
             }
+
+            if (m_enemyCount <= 0)
+                {
+                     Vector2D _pos;
+                    _pos.x = x;
+                    _pos.y = y;
+                    SetLocation(_pos,'D');
+                }
         }
     }
 }

@@ -9,5 +9,4 @@ public:
     void Update();
 private:
     int m_keyCount = 0;
-    int m_enemyCount = 0;
 };
