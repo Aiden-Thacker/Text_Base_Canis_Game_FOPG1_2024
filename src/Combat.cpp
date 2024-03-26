@@ -76,7 +76,12 @@ void Attack(Character *_attacker, Character *_target)
         }
         damage += ((int)(((*_attacker).stats.strength-3)/5))+((*_attacker).weapon.damage_bonus);
 
-        (*_target).health -= damage-((int)(((*_target).stats.defense-3)/5));
+        damage-=((int)(((*_target).stats.defense-3)/5));
+        if(damage<0)
+        {
+            damage = 0;
+        }
+        (*_target).health -= damage;
     }
     else
     {
@@ -99,10 +104,15 @@ void Heavy_Attack(Character *_attacker, Character *_target)
         {
             damage += RollSum((*_attacker).weapon.damage_dice[i],(*_attacker).weapon.damage_dice_sides[i]);
         }
-        damage += RollSum((*_attacker).weapon.damage_dice[0],(*_attacker).weapon.damage_dice_sides[0]);
+        damage += RollSum(1,(*_attacker).weapon.damage_dice_sides[0]);
         damage += ((int)(((*_attacker).stats.strength-3)/5))+((*_attacker).weapon.damage_bonus);
 
-        (*_target).health -= damage-((int)(((*_target).stats.defense-3)/5));
+        damage-=((int)(((*_target).stats.defense-3)/5));
+        if(damage<0)
+        {
+            damage = 0;
+        }
+        (*_target).health -= damage;
     }
     else
     {
@@ -125,10 +135,15 @@ void Light_Attack(Character *_attacker, Character *_target)
         {
             damage += RollSum((*_attacker).weapon.damage_dice[i],(*_attacker).weapon.damage_dice_sides[i]);
         }
-        damage -= RollSum((*_attacker).weapon.damage_dice[0],(*_attacker).weapon.damage_dice_sides[0]);
+        damage -= RollSum(1,(*_attacker).weapon.damage_dice_sides[0]);
         damage += ((int)(((*_attacker).stats.strength-3)/5))+((*_attacker).weapon.damage_bonus);
 
-        (*_target).health -= damage-((int)(((*_target).stats.defense-3)/5));
+        damage-=((int)((((*_target).stats.defense-3)+(*_target).armor.defense+(*_target).shield.defense)/5));
+        if(damage<0)
+        {
+            damage = 0;
+        }
+        (*_target).health -= damage;
     }
     else
     {

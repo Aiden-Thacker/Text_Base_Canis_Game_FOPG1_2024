@@ -7,7 +7,7 @@ class Armor: public Equipment
 private:
 
 public:
-    int defense;
+    int defense = 5;
 };
 
 

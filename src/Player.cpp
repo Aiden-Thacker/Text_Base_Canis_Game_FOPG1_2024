@@ -10,6 +10,24 @@ void Player::Start()
     m_character = 'P';
 }
 
+void Player::Level_Up()
+{
+    printf("LEVEL UP!!!\n");
+    this->stats.level++;
+    this->stats.constitution += RollIndex(4);
+    int healthBonus = RollIndex(4) + (int)(this->stats.constitution/5);
+    this->stats.maxHealth += healthBonus;
+    this->health += healthBonus;
+    this->stats.defense += RollIndex(4);
+    this->stats.dexterity += RollIndex(4);
+    this->stats.strength += RollIndex(4);
+    if(RollIndex(5)==4)
+    {
+        this->stats.expertise+=1;
+    }
+    Printstats(stats);
+}
+
 void Player::Update()
 {
     if (m_enemy == nullptr)
@@ -38,6 +56,33 @@ void Player::Update()
         {
             StartCombat(this, m_enemy);
         }  
+        if (directionInput == 'L')
+        {
+            Level_Up();
+        }  
+        if (directionInput == 'P')
+        {
+            weapon.PrintWeapon();
+        }
+        if (directionInput == 'U')
+        {
+            printf("Upgrade Weapon!!!\n");
+            weapon.SetLevel(stats.level);
+            weapon.PrintWeapon();
+        } 
+        if (directionInput == 'R')
+        {
+            printf("Reroll Weapon!!\n");
+            weapon.RollRarity();
+            weapon.RollStats();
+            weapon.PrintWeapon();
+        } 
+        if (directionInput == 'r')
+        {
+            printf("Reroll Weapon Stats!!\n");
+            weapon.RollStats();
+            weapon.PrintWeapon();
+        } 
     }
 
     if (directionInput == 'w')
