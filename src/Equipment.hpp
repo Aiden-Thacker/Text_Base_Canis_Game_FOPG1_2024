@@ -7,7 +7,8 @@ class Equipment
 {
 private:
 public:
-    int level;
+    void SetName(std::string);
+    int level = 3;
     int rarity;
     std::string name;
 };

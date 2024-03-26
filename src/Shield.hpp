@@ -7,8 +7,6 @@ class Shield: public Equipment
 private:
     
 public:
-    int defense;
-    int block;
-    Shield(/* args */);
-    ~Shield();
+    int defense = 0;
+    int block = 1;
 };
