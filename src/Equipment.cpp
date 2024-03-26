@@ -4,3 +4,8 @@
     {
         this->name = new_name;
     }
+
+    void Equipment::RollRarity()
+    {
+        this->rarity=RollIndex(4);
+    }

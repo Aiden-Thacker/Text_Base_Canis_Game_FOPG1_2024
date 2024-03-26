@@ -27,10 +27,7 @@ void Weapon::RollStats()
 
 }
 
-void Weapon::RollRarity()
-{
-    this->rarity=RollIndex(4);
-}
+
 
 void Weapon::SetLevel(int new_level)
 {
