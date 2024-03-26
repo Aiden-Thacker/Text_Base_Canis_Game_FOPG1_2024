@@ -29,7 +29,10 @@ void StartCombat(Player *_player, Enemy *_enemy)
             else
             {
                 Act(_player,_enemy,input,&run);
-                Act(_enemy,_player,enemy_action,&run);
+                if((*_enemy).health>0)
+                {
+                    Act(_enemy,_player,enemy_action,&run);
+                }
             }
         } 
         else
@@ -42,7 +45,10 @@ void StartCombat(Player *_player, Enemy *_enemy)
             else
             {
                 Act(_enemy,_player,enemy_action,&run);
-                Act(_player,_enemy,input,&run);
+                if((*_player).health>0)
+                {
+                    Act(_player,_enemy,input,&run);
+                }
             }
         }
         _enemy->stats.block=0;
@@ -56,6 +62,13 @@ void StartCombat(Player *_player, Enemy *_enemy)
     else if(_enemy->health<=0)
     {
         printf("You Win\n");
+        int exp = (((*_enemy).stats.level * 2)+(*_enemy).weapon.rarity+(*_enemy).armor.rarity+(*_enemy).shield.rarity)*2;
+        printf("You got %i Experience\n",exp);
+        (*_player).experience += exp;
+        if((*_player).experience>=(*_player).stats.level * 10)
+        {
+            (*_player).Level_Up();
+        }
     }
 }
 
