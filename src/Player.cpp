@@ -2,6 +2,7 @@
 #include "fogpi/fogpi.hpp"
 #include "fogpi/Math.hpp"
 #include "Room.hpp"
+#include "Combat.hpp"
 #include <string>
 
 void Player::Start()
@@ -9,8 +10,31 @@ void Player::Start()
     m_character = 'P';
 }
 
+void Player::Level_Up()
+{
+    printf("LEVEL UP!!!\n");
+    this->stats.level++;
+    this->stats.constitution += RollIndex(4);
+    int healthBonus = RollIndex(4) + (int)(this->stats.constitution/5);
+    this->stats.maxHealth += healthBonus;
+    this->health += healthBonus;
+    this->stats.defense += RollIndex(4);
+    this->stats.dexterity += RollIndex(4);
+    this->stats.strength += RollIndex(4);
+    if(RollIndex(5)==4)
+    {
+        this->stats.expertise+=1;
+    }
+    Printstats(stats);
+}
+
 void Player::Update()
 {
+    if (m_enemy == nullptr)
+                    m_enemy = new Enemy();
+                
+                m_enemy->Init(4, 4);
+                m_enemy->Start();
     // direction
     std::string instruction = "wasd and Enter to move";
     char directionInput = 'r';
@@ -28,6 +52,37 @@ void Player::Update()
             room->KillPlayer();
             return;
         }    
+        if (directionInput == 'C')
+        {
+            StartCombat(this, m_enemy);
+        }  
+        if (directionInput == 'L')
+        {
+            Level_Up();
+        }  
+        if (directionInput == 'P')
+        {
+            weapon.PrintWeapon();
+        }
+        if (directionInput == 'U')
+        {
+            printf("Upgrade Weapon!!!\n");
+            weapon.SetLevel(stats.level);
+            weapon.PrintWeapon();
+        } 
+        if (directionInput == 'R')
+        {
+            printf("Reroll Weapon!!\n");
+            weapon.RollRarity();
+            weapon.RollStats();
+            weapon.PrintWeapon();
+        } 
+        if (directionInput == 'r')
+        {
+            printf("Reroll Weapon Stats!!\n");
+            weapon.RollStats();
+            weapon.PrintWeapon();
+        } 
     }
 
     if (directionInput == 'w')
@@ -66,6 +121,6 @@ void Player::Update()
     if (room->GetLocation(m_position + direction) == ' ')
       {
         m_position += direction;
-        Printstats(stats);
+        //Printstats(stats);
       }  
 }

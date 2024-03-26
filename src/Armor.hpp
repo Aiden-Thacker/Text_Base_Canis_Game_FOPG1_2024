@@ -7,15 +7,7 @@ class Armor: public Equipment
 private:
 
 public:
-    int defense;
-    Armor(/* args */);
-    ~Armor();
+    int defense = 5;
 };
 
-Armor::Armor(/* args */)
-{
-}
 
-Armor::~Armor()
-{
-}

@@ -10,9 +10,11 @@ using namespace std;
 
 void Printstats(const Stats&  _stats)
 {
-    printf("Current Player Heath: {%f}  \n", _stats.maxHealth);
-    printf("Player Strength: {%f}  \n", _stats.strength);
-    printf("Player Dexterity: {%f}  \n", _stats.dexterity);
-    printf("Player Constitution:  {%f}  \n", _stats.constitution);    
+    printf("Player Level: {%i}  \n", _stats.level);
+    printf("Current Player Heath: {%i}  \n", _stats.maxHealth);
+    printf("Player Expertise: {%i}  \n", _stats.expertise);
+    printf("Player Strength: {%i}  \n", _stats.strength);
+    printf("Player Dexterity: {%i}  \n", _stats.dexterity);
+    printf("Player Constitution:  {%i}  \n", _stats.constitution);    
 } 
 

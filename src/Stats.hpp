@@ -2,13 +2,14 @@
 
 struct Stats
 {
-    int   level = 1;
-    int   expertise = 0;
-    float maxHealth = 10.0f;
-    float strength = 10.0f;
-    float dexterity = 10.0f;
-    float constitution = 10.0f;
-    float defense = 10.0f;
+    int level = 1;
+    int expertise = 0;
+    int maxHealth = 10;
+    int strength = 10;
+    int dexterity = 10;
+    int constitution = 10;
+    int defense = 10;
+    int block = 0;
 
 };
 

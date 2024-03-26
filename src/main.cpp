@@ -8,6 +8,7 @@
 #include "Room.hpp"
 #include "Entity.hpp"
 #include "Dice.hpp"
+#include "Combat.hpp"
 
 #include <string>
 

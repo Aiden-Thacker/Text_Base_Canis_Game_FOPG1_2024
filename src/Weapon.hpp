@@ -10,13 +10,17 @@ class Weapon: public Equipment
 private:
     
 public:
-    std::vector<int> damage_dice;
-    std::vector<int> damage_dice_sides;
+    void RollStats();
+    void RollRarity();
+    void SetLevel(int);
+
+    void PrintWeapon();
+
+    std::vector<int> damage_dice {1};
+    std::vector<int> damage_dice_sides {6};
     
-    std::vector<int> hit_dice;
-    std::vector<int> hit_dice_sides;
-    int hit_chance;
-    int damage_bonus;
-    Weapon(/* args */);
-    ~Weapon();
+    std::vector<int> hit_dice {1};
+    std::vector<int> hit_dice_sides {4};
+    int miss_chance = 1;
+    int damage_bonus = 1;
 };
