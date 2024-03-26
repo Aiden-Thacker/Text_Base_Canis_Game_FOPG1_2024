@@ -157,4 +157,10 @@ void Room::OpenDoor(Vector2D _pos)
             Load(m_doors[i].path);
         }
     }
+
+    m_player->health += RollSum(RollIndex(m_player->stats.level), 4);
+    if(m_player->health > m_player->stats.maxHealth)
+    {
+        m_player->health = m_player->stats.maxHealth;
+    }
 }

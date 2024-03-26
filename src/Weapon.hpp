@@ -1,9 +1,9 @@
 #pragma once
 
-#include <vector>
+
 
 #include "Equipment.hpp"
-#include "Dice.hpp"
+
 
 class Weapon: public Equipment
 {
@@ -11,7 +11,7 @@ private:
     
 public:
     void RollStats();
-    void RollRarity();
+    
     void SetLevel(int);
 
     void PrintWeapon();
