@@ -41,11 +41,10 @@ void Player::Update()
     }
 
     //check for enemy
-   // if (room->GetLocation(m_position + direction) == 'E')
-   // {
-      //  m_enemyCount++;
-      //  room->ClearLocation(m_position + direction);
-   // }
+    if (room->GetLocation(m_position + direction) == 'E')
+    {
+        room->ClearLocation(m_position + direction);
+    }
 
     // check for lock
     if (room->GetLocation(m_position + direction) == 'L')
