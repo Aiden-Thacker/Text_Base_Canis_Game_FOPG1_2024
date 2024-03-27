@@ -2,11 +2,17 @@
 
 #include "Player.hpp"
 
+#include "Treasure.hpp"
+
 #include <fstream>
 #include <string>
 
 void Room::Load(std::string _path)
 {
+    // Place the treasure in the room (if not already placed)
+    bool treasurePlaced = false;
+    Treasure::PlaceTreasure(m_map, treasurePlaced);
+
     m_map.clear();
     m_doors.clear();
 
