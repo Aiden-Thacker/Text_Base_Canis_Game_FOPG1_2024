@@ -54,6 +54,9 @@ void Player::Update()
         }    
         if (directionInput == 'C')
         {
+            m_enemy->stats.level=stats.level;
+            m_enemy->SetEquipmentLevel();
+            m_enemy->RollEquipment();
             StartCombat(this, m_enemy);
         }  
         if (directionInput == 'L')
@@ -62,26 +65,25 @@ void Player::Update()
         }  
         if (directionInput == 'P')
         {
-            weapon.PrintWeapon();
+            PrintEquipment();
         }
         if (directionInput == 'U')
         {
-            printf("Upgrade Weapon!!!\n");
-            weapon.SetLevel(stats.level);
-            weapon.PrintWeapon();
+            printf("Upgrade Equipment!!!\n");
+            SetEquipmentLevel();
+            PrintEquipment();
         } 
         if (directionInput == 'R')
         {
-            printf("Reroll Weapon!!\n");
-            weapon.RollRarity();
-            weapon.RollStats();
-            weapon.PrintWeapon();
+            printf("Reroll Equipment!!\n");
+            RollEquipment();
+            PrintEquipment();
         } 
         if (directionInput == 'r')
         {
-            printf("Reroll Weapon Stats!!\n");
-            weapon.RollStats();
-            weapon.PrintWeapon();
+            printf("Reroll Equipment Stats!!\n");
+            RollEquipmentStats();
+            PrintEquipment();
         } 
     }
 

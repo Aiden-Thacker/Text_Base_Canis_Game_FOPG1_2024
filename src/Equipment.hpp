@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include "fogpi/Math.hpp"
-#include "dice.hpp"
+#include "Dice.hpp"
 
 class Equipment
 {

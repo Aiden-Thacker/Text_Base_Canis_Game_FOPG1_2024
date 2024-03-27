@@ -10,6 +10,10 @@
 class Character : public Entity
 {
     public:
+    void RollEquipment();
+    void RollEquipmentStats();
+    void SetEquipmentLevel();
+    void PrintEquipment();
     Stats stats;
     int health = stats.maxHealth;
     Shield shield;
