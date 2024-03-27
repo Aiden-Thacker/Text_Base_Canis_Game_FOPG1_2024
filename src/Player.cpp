@@ -10,6 +10,11 @@ void Player::Start()
     m_character = 'P';
 }
 
+void Player::Gold(int _goldCount)
+{
+    m_goldCount += _goldCount;
+}
+
 void Player::Level_Up()
 {
     printf("LEVEL UP!!!\n");
@@ -98,6 +103,13 @@ void Player::Update()
     if (room->GetLocation(m_position + direction) == 'K')
     {
         m_keyCount++;
+        room->ClearLocation(m_position + direction);
+    }
+
+    // check for gold
+    if (room->GetLocation(m_position + direction) == 'G')
+    {
+        m_goldCount++;
         room->ClearLocation(m_position + direction);
     }
 

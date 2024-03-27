@@ -56,6 +56,7 @@ void StartCombat(Player *_player, Enemy *_enemy)
     else if(_enemy->health<=0)
     {
         printf("You Win\n");
+        _player->Gold(1); //amount of given to player
     }
 }
 
