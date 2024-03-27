@@ -33,3 +33,29 @@ void Character::PrintEquipment()
         this->shield.PrintShield();
         printf("\n");
     }
+
+    void Character::Level_Up()
+    {
+        printf("LEVEL UP!!!\n");
+        this->stats.level++;
+        this->stats.constitution += RollIndex(4);
+        int healthBonus = RollIndex(4) + (int)(this->stats.constitution/5);
+        this->stats.maxHealth += healthBonus;
+        this->health += healthBonus;
+        this->stats.defense += RollIndex(4);
+        this->stats.dexterity += RollIndex(4);
+        this->stats.strength += RollIndex(4);
+        if(RollIndex(5)==4)
+        {
+            this->stats.expertise+=1;
+        }
+        Printstats(stats);
+    }
+
+    void Character::Level_Up(int times)
+    {
+        for(int i = 0; i<times; i++)
+        {
+            Level_Up();
+        }
+    }

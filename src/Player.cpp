@@ -10,28 +10,12 @@ void Player::Start()
     m_character = 'P';
 }
 
-void Player::Level_Up()
-{
-    printf("LEVEL UP!!!\n");
-    this->stats.level++;
-    this->stats.constitution += RollIndex(4);
-    int healthBonus = RollIndex(4) + (int)(this->stats.constitution/5);
-    this->stats.maxHealth += healthBonus;
-    this->health += healthBonus;
-    this->stats.defense += RollIndex(4);
-    this->stats.dexterity += RollIndex(4);
-    this->stats.strength += RollIndex(4);
-    if(RollIndex(5)==4)
-    {
-        this->stats.expertise+=1;
-    }
-    Printstats(stats);
-}
+
 
 void Player::Update()
 {
     if (m_enemy == nullptr)
-                    m_enemy = new Enemy();
+                    m_enemy = new Harpy(/*stats.level*/);
                 
                 m_enemy->Init(4, 4);
                 m_enemy->Start();
@@ -54,7 +38,10 @@ void Player::Update()
         }    
         if (directionInput == 'C')
         {
-            m_enemy->stats.level=stats.level;
+            if(stats.level>m_enemy->stats.level)
+            {
+                m_enemy->Level_Up(stats.level-m_enemy->stats.level);
+            }
             m_enemy->SetEquipmentLevel();
             m_enemy->RollEquipment();
             StartCombat(this, m_enemy);
@@ -125,4 +112,77 @@ void Player::Update()
         m_position += direction;
         //Printstats(stats);
       }  
+}
+
+void Player::Pick_Up(Shield new_shield)
+{
+    char choice = ' ';
+    std::string prompt = "Keep your Current Shield (k)\nSwap to New Shield (s)\n";
+    printf("You Found A Shield!!!\nCurrent Shield:\n");
+    shield.PrintShield();
+    printf("\nNew Shield:\n");
+    new_shield.PrintShield();
+
+    while(choice != 'k' && choice != 's')
+    {
+        choice = request_char(prompt.c_str());
+    }
+
+    if(choice == 'k')
+    {
+        printf("Gotta Stick With Ol Reliable.\n");
+    }
+    else if(choice == 's')
+    {
+        printf("New Shield Aquired!!!\n");
+        shield = new_shield;
+    }
+}
+void Player::Pick_Up(Armor new_armor)
+{
+    char choice = ' ';
+    std::string prompt = "Keep your Current Armor (k)\nSwap to New Armor (s)\n";
+    printf("You Found Some Armor!!!\nCurrent Armor:\n");
+    armor.PrintArmor();
+    printf("\nNew Armor:\n");
+    new_armor.PrintArmor();
+
+    while(choice != 'k' && choice != 's')
+    {
+        choice = request_char(prompt.c_str());
+    }
+
+    if(choice == 'k')
+    {
+        printf("Gotta Stick With Ol Reliable.\n");
+    }
+    else if(choice == 's')
+    {
+        printf("New Armor Aquired!!!\n");
+        armor = new_armor;
+    }
+}
+void Player::Pick_Up(Weapon new_weapon)
+{
+    char choice = ' ';
+    std::string prompt = "Keep your Current Weapon (k)\nSwap to New Weapon (s)\n";
+    printf("You Found A Weapon!!!\nCurrent Weapon:\n");
+    weapon.PrintWeapon();
+    printf("\nNew Weapon:\n");
+    new_weapon.PrintWeapon();
+
+    while(choice != 'k' && choice != 's')
+    {
+        choice = request_char(prompt.c_str());
+    }
+
+    if(choice == 'k')
+    {
+        printf("Gotta Stick With Ol Reliable.\n");
+    }
+    else if(choice == 's')
+    {
+        printf("New Weapon Aquired!!!\n");
+        weapon = new_weapon;
+    }
 }
