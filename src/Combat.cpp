@@ -65,9 +65,29 @@ void StartCombat(Player *_player, Enemy *_enemy)
         int exp = (((*_enemy).stats.level * 2)+(*_enemy).weapon.rarity+(*_enemy).armor.rarity+(*_enemy).shield.rarity)*2;
         printf("You got %i Experience\n",exp);
         (*_player).experience += exp;
-        if((*_player).experience>=(*_player).stats.level * 10)
+        while((*_player).experience>=(*_player).stats.level * 10)
         {
+            (*_player).experience -= (*_player).stats.level * 10;
             (*_player).Level_Up();
+        }
+
+        for(int i = 0; i<_enemy->loot_chance.size();i++)
+        {
+            if(RollSum(1,_enemy->loot_chance_dice[i])>=_enemy->loot_chance[i])
+            {
+                if(i==0)
+                {
+                    _player->Pick_Up(_enemy->weapon);
+                }
+                else if(i==1)
+                {
+                    _player->Pick_Up(_enemy->armor);
+                }
+                else if(i==2)
+                {
+                    _player->Pick_Up(_enemy->shield);                    
+                }
+            }
         }
     }
 }
