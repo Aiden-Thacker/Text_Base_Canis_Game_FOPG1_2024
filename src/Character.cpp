@@ -2,12 +2,20 @@
 
 void Character::RollEquipment()
     {
-        this->armor.RollRarity();
-        this->shield.RollRarity();
-        this->weapon.RollRarity();
-        this->armor.RollStats();
-        this->shield.RollStats();
-        this->weapon.RollStats();
+        if (RollEquipmentOverride == nullptr)
+        {
+            this->armor.RollRarity();
+            this->shield.RollRarity();
+            this->weapon.RollRarity();
+            this->armor.RollStats();
+            this->shield.RollStats();
+            this->weapon.RollStats();
+        }
+        else
+        {
+            RollEquipmentOverride(this);
+        }
+        
     }
 
 void Character::RollEquipmentStats()
