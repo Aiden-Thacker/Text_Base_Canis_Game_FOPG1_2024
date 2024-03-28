@@ -2,6 +2,11 @@
 
 void Weapon::RollStats()
 {
+    std::vector<std::string> names {"Dagger", "Long Sword", "Claymore", "Great Axe"};
+    if(name == "");
+    {
+        name = names[RollIndex(4)];
+    }
     damage_dice.clear();
     damage_dice_sides.clear();
     std::vector<int> possible_dice {4,6,8,10,12};

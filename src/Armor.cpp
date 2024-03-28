@@ -2,6 +2,11 @@
 
 void Armor::RollStats()
 {
+    std::vector<std::string> names {"Leather Tunic", "Plate Armor", "Chainmail Shirt", "Wooden Chestplate"};
+    if(name == "");
+    {
+        name = names[RollIndex(4)];
+    }
     this->weight = RollSum(1,3);
     this->defense = ((RollSum(1,this->rarity+1))*(RollIndex(1+((int)(level/2)))))+5;
     if(defense<0)
