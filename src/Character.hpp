@@ -10,6 +10,13 @@
 class Character : public Entity
 {
     public:
+    void RollEquipment();
+    void (*RollEquipmentStatsOverride)(Character*) = nullptr;
+    void RollEquipmentStats();
+    void SetEquipmentLevel();
+    void PrintEquipment();
+    void Level_Up();
+    void Level_Up(int);
     Stats stats;
     int health = stats.maxHealth;
     Shield shield;

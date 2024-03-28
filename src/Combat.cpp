@@ -29,7 +29,10 @@ void StartCombat(Player *_player, Enemy *_enemy)
             else
             {
                 Act(_player,_enemy,input,&run);
-                Act(_enemy,_player,enemy_action,&run);
+                if((*_enemy).health>0)
+                {
+                    Act(_enemy,_player,enemy_action,&run);
+                }
             }
         } 
         else
@@ -42,7 +45,10 @@ void StartCombat(Player *_player, Enemy *_enemy)
             else
             {
                 Act(_enemy,_player,enemy_action,&run);
-                Act(_player,_enemy,input,&run);
+                if((*_player).health>0)
+                {
+                    Act(_player,_enemy,input,&run);
+                }
             }
         }
         _enemy->stats.block=0;
@@ -56,6 +62,33 @@ void StartCombat(Player *_player, Enemy *_enemy)
     else if(_enemy->health<=0)
     {
         printf("You Win\n");
+        int exp = (((*_enemy).stats.level * 2)+(*_enemy).weapon.rarity+(*_enemy).armor.rarity+(*_enemy).shield.rarity)*2;
+        printf("You got %i Experience\n",exp);
+        (*_player).experience += exp;
+        while((*_player).experience>=(*_player).stats.level * 10)
+        {
+            (*_player).experience -= (*_player).stats.level * 10;
+            (*_player).Level_Up();
+        }
+
+        for(int i = 0; i<_enemy->loot_chance.size();i++)
+        {
+            if(RollSum(1,_enemy->loot_chance_dice[i])>=_enemy->loot_chance[i])
+            {
+                if(i==0)
+                {
+                    _player->Pick_Up(_enemy->weapon);
+                }
+                else if(i==1)
+                {
+                    _player->Pick_Up(_enemy->armor);
+                }
+                else if(i==2)
+                {
+                    _player->Pick_Up(_enemy->shield);                    
+                }
+            }
+        }
         _player->Gold(1); //amount of given to player
     }
 }
