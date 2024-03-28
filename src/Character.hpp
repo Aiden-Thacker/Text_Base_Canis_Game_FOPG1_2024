@@ -11,6 +11,7 @@ class Character : public Entity
 {
     public:
     void RollEquipment();
+    void (*RollEquipmentStatsOverride)(Character*) = nullptr;
     void RollEquipmentStats();
     void SetEquipmentLevel();
     void PrintEquipment();
