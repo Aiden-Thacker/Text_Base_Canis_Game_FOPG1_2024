@@ -4,6 +4,6 @@ next_level assets/maps/level_3.map
 map
 # # # # L # # # # -1
 # 0 0 0 0 0 0 0 # -1
-# S 0 0 0 0 K 0 D -1
+# S 0 0 E 0 K 0 D -1
 # 0 0 0 0 0 0 0 # -1
 # # # # D # # # # -2

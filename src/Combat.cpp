@@ -89,6 +89,11 @@ void StartCombat(Player *_player, Enemy *_enemy)
                 }
             }
         }
+
+        /*if (_player->room->GetLocation(_player->GetPosition(m_position)) == 'K')
+        {        
+            _player->room->ClearLocation(m_position + direction);
+        }*/
     }
 }
 

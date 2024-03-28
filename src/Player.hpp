@@ -6,6 +6,7 @@
 #include "Enemy.hpp"
 #include "Harpy.hpp"
 #include "Cyclops.hpp"
+#include "Combat.hpp"
 
 class Player : public Character
 {
