@@ -7,7 +7,5 @@ private:
     /* data */
 public:
     Cyclops(/*int level*/);
-    
-    void RollEquipmentStats();
 };
 
