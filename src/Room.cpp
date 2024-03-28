@@ -91,6 +91,18 @@ void Room::Load(std::string _path)
                     doorCount++;
                 }
             }
+            if(m_map[y][x] == 'E')
+            {
+                if (m_enemy == nullptr)
+                    m_enemy = new Enemy();
+                
+                if(m_player->stats.level > m_enemy->stats.level)
+                {
+                    m_enemy->Level_Up(m_player->stats.level-m_enemy->stats.level);
+                }
+                m_enemy->SetEquipmentLevel();
+                m_enemy->RollEquipment();
+            }
         }
     }
 }

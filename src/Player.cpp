@@ -36,7 +36,7 @@ void Player::Update()
             room->KillPlayer();
             return;
         }    
-        /*if (directionInput == 'C')
+        if (directionInput == 'C')
         {
             if(stats.level>m_enemy->stats.level)
             {
@@ -45,7 +45,7 @@ void Player::Update()
             m_enemy->SetEquipmentLevel();
             m_enemy->RollEquipment();
             StartCombat(this, m_enemy);
-        }  */
+        }
         if (directionInput == 'L')
         {
             Level_Up();
@@ -90,18 +90,6 @@ void Player::Update()
         room->ClearLocation(m_position + direction);
     }
 
-    // check for enemy
-    if (room->GetLocation(m_position + direction) == 'E')
-    {
-        if(stats.level>m_enemy->stats.level)
-        {
-            m_enemy->Level_Up(stats.level-m_enemy->stats.level);
-        }
-        m_enemy->SetEquipmentLevel();
-        m_enemy->RollEquipment();
-        StartCombat(this, m_enemy);
-    }
-
     // check for lock
     if (room->GetLocation(m_position + direction) == 'L')
     {
@@ -116,6 +104,12 @@ void Player::Update()
     if (room->GetLocation(m_position + direction) == 'D')
     {
         room->OpenDoor(m_position + direction);
+    }
+
+    // check for enemy
+    if(room->GetLocation(m_position + direction) == 'E')
+    {
+        StartCombat(this, m_enemy);
     }
 
     // try to move
