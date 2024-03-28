@@ -72,21 +72,24 @@ void Treasure::OpenTreasure(Player* player) {
     } 
     else if (result == 1) 
     {
-        Shield newShield;
+        Shield newShield = (*(new Shield()));
+        newShield.SetLevel(player->stats.level);
         newShield.RollRarity();
         newShield.RollStats();
         player->Pick_Up(newShield);
     } 
     else if (result == 2) 
     {
-        Armor newArmor; 
+        Armor newArmor = (*(new Armor()));
+        newArmor.SetLevel(player->stats.level);
         newArmor.RollRarity();
         newArmor.RollStats(); 
         player->Pick_Up(newArmor);
     } 
     else if (result == 3) 
     {
-        Weapon newWeapon;
+        Weapon newWeapon = (*(new Weapon()));
+        newWeapon.SetLevel(player->stats.level);
         newWeapon.RollRarity();
         newWeapon.RollStats();
         player->Pick_Up(newWeapon);
