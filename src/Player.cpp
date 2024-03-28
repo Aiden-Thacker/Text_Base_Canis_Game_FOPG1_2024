@@ -12,7 +12,7 @@ void Player::Start()
 
 void Player::Gold(int _goldCount)
 {
-    m_goldCount += _goldCount;
+    m_goldCount += RollSum(RollIndex(m_enemy->stats.level), _goldCount);
 }
 
 
