@@ -12,9 +12,16 @@ void Character::RollEquipment()
 
 void Character::RollEquipmentStats()
     {
-        this->armor.RollStats();
-        this->shield.RollStats();
-        this->weapon.RollStats();
+        if (RollEquipmentStatsOverride == nullptr)
+        {
+            this->armor.RollStats();
+            this->shield.RollStats();
+            this->weapon.RollStats();
+        }
+        else
+        {
+            RollEquipmentStatsOverride(this);
+        }
     }
 
 void Character::SetEquipmentLevel()
