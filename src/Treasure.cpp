@@ -1,6 +1,5 @@
 #include "Treasure.hpp"
 #include "Dice.hpp"
-#include "Player.hpp"
 
 bool Treasure::hasTreasureChest() {
     // Roll a six-sided die
@@ -31,7 +30,7 @@ void Treasure::printRoomContents(bool treasure, bool key) {
 void Treasure::PlaceTreasure(std::vector<std::vector<char>> *map, bool treasurePlaced) 
 {
     // Determine if the room has a treasure chest
-    bool treasure = true/*hasTreasureChest()*/;
+    bool treasure = true;
     // If the room has a treasure chest, place it in the room
     if (treasure) {
         // Roll for the location of the treasure chest
@@ -58,13 +57,38 @@ void Treasure::PlaceTreasure(std::vector<std::vector<char>> *map, bool treasureP
     }
 }
 
-void Treasure::OpenTreasure()
-{
-     // Roll a six-sided die
-    int result = RollSum(0, 6);
-    // If the result is 1 or 2, return true (representing the presence of a key)
-    if (result == 1)
+void Treasure::OpenTreasure(Player* player) {
+    if (player == nullptr)
+        player = new Player();
+
+    int result = RollIndex(4);
+
+    if (result == 0) 
     {
-        
+        // Generate a random amount of gold within a range, for example, between 1 and 10
+        int randomGold = RollSum(1, 10);
+        player->Gold(randomGold);
+        printf("You received [%i] gold.\n", randomGold);
+    } 
+    else if (result == 1) 
+    {
+        Shield newShield;
+        newShield.RollRarity();
+        newShield.RollStats();
+        player->Pick_Up(newShield);
+    } 
+    else if (result == 2) 
+    {
+        Armor newArmor; 
+        newArmor.RollRarity();
+        newArmor.RollStats(); 
+        player->Pick_Up(newArmor);
+    } 
+    else if (result == 3) 
+    {
+        Weapon newWeapon;
+        newWeapon.RollRarity();
+        newWeapon.RollStats();
+        player->Pick_Up(newWeapon);
     }
 }

@@ -21,5 +21,6 @@ public:
     int m_goldCount = 0;
 private:
     int m_keyCount = 0;
+    int m_treasureCount = 0;
     Enemy *m_enemy = nullptr;
 };

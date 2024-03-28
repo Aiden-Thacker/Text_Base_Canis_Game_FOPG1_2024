@@ -3,6 +3,7 @@
 #include "fogpi/Math.hpp"
 #include "Room.hpp"
 #include "Combat.hpp"
+#include "Treasure.hpp"
 #include <string>
 
 void Player::Start()
@@ -91,6 +92,14 @@ void Player::Update()
     if (room->GetLocation(m_position + direction) == 'K')
     {
         m_keyCount++;
+        room->ClearLocation(m_position + direction);
+    }
+
+    // check for treasure
+    if (room->GetLocation(m_position + direction) == 'T')
+    {
+        Treasure::OpenTreasure(this);
+        
         room->ClearLocation(m_position + direction);
     }
 

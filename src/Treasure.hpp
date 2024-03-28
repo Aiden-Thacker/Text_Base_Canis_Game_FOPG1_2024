@@ -1,4 +1,8 @@
+#pragma once
+
 #include <vector>
+#include "Player.hpp"
+
 
 class Treasure {
 public:
@@ -6,4 +10,5 @@ public:
     static bool hasKey(); // Function to determine if the room has a key
     static void printRoomContents(bool treasure, bool key); // Function to print the contents of the room
     static void PlaceTreasure(std::vector<std::vector<char>> *map, bool treasurePlaced); // Function to place treasure in the room
+    static void OpenTreasure(Player* player);
 };
