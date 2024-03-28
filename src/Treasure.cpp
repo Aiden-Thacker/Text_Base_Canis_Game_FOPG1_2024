@@ -61,7 +61,10 @@ void Treasure::PlaceTreasure(std::vector<std::vector<char>> *map, bool treasureP
 void Treasure::OpenTreasure()
 {
      // Roll a six-sided die
-    int result = RollSum(1, 6);
+    int result = RollSum(0, 6);
     // If the result is 1 or 2, return true (representing the presence of a key)
-    return (result == 1 || result == 2);
+    if (result == 1)
+    {
+        
+    }
 }
