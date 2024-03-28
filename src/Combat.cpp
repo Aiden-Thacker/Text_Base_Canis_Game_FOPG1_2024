@@ -70,6 +70,8 @@ void StartCombat(Player *_player, Enemy *_enemy)
             (*_player).experience -= (*_player).stats.level * 10;
             (*_player).Level_Up();
         }
+        _player->Gold(5); //amount of given to player
+        printf("Your Gold: %i\n", _player->m_goldCount);
 
         for(int i = 0; i<_enemy->loot_chance.size();i++)
         {
