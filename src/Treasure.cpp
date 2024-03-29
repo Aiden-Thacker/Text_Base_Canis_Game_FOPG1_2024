@@ -4,6 +4,7 @@
 bool Treasure::hasTreasureChest() {
     // Roll a six-sided die
     int result = RollSum(1, 6);
+    
     // If the result is 1 or 2, return true (representing the presence of a treasure chest)
     return (result == 1 || result == 2);
 }
@@ -67,7 +68,7 @@ void Treasure::OpenTreasure(Player* player) {
     {
         // Generate a random amount of gold within a range, for example, between 1 and 10
         int randomGold = RollSum(1, 10);
-        player->Gold(randomGold);
+        player->m_goldCount+=randomGold;//Gold(randomGold);
         printf("You received [%i] gold.\n", randomGold);
     } 
     else if (result == 1) 

@@ -1,0 +1,13 @@
+level 5.3
+next_level assets/maps/level_4_3.map
+next_level assets/maps/level_6.map
+next_level assets/maps/level_3_3.map
+next_level assets/maps/level_2_3.map
+map
+# # # # # # # L # # # # # # # -1
+# 0 0 # 0 0 0 0 0 0 0 # 0 0 # -1
+# 0 0 0 0 0 0 S 0 0 0 0 0 0 # -1
+D 0 # # # 0 0 0 0 0 # # # 0 D -1
+# 0 0 0 0 0 0 E 0 0 0 0 0 0 # -1
+# K 0 # 0 0 0 0 0 0 0 # 0 0 # -1
+# # # # # # # L # # # # # # # -1
