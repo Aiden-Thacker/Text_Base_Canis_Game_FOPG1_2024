@@ -2,6 +2,35 @@
 
 void CyclopsRollEquipmentStats(Character *_instance)
     {
+        printf("Cyclops Override\n");
+        _instance->armor.RollStats();
+        _instance->shield.RollStats();
+        _instance->weapon.RollStats();
+        _instance->shield.block += 2;
+        _instance->shield.defense += 10;
+        _instance->armor.defense *=2;
+
+        //Weapon
+        //No D4s or D6s allowed
+        for(int i=0; i<_instance->weapon.damage_dice_sides.size();i++)
+        {
+            if(_instance->weapon.damage_dice_sides[i] == 4 || _instance->weapon.damage_dice_sides[i] == 6) 
+            {
+                _instance->weapon.damage_dice_sides[i] = 8;
+            }
+        }
+
+        _instance->weapon.hit_dice_sides[0] = 6;
+        _instance->weapon.miss_chance = 2;
+    }
+
+
+void CyclopsRollEquipment(Character *_instance)
+    {
+        printf("Cyclops Override\n");
+        _instance->armor.RollRarity();
+        _instance->shield.RollRarity();
+        _instance->weapon.RollRarity();
         _instance->armor.RollStats();
         _instance->shield.RollStats();
         _instance->weapon.RollStats();
@@ -27,6 +56,7 @@ Cyclops::Cyclops(/*int level*/)
 {
     name = "Cyclops";
     RollEquipmentStatsOverride = &CyclopsRollEquipmentStats;
+    RollEquipmentOverride = &CyclopsRollEquipment;
 
     //Stats
     stats.dexterity = 8;

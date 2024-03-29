@@ -1,8 +1,72 @@
 #include "Harpy.hpp"
 
+void HarpyRollEquipmentStats(Character *_instance)
+    {
+        printf("Harpy Override\n");
+        _instance->armor.RollStats();
+        _instance->shield.RollStats();
+        _instance->weapon.RollStats();
+        _instance->shield.block += 2;
+        _instance->shield.defense += 10;
+        _instance->armor.defense *=2;
+
+        _instance->armor.name = "Tunic";
+        _instance->weapon.name = "Talons";
+        _instance->shield.name = "None";
+        //no shield
+        _instance->shield.block = 0;
+        _instance->shield.defense = 0;
+
+    //Weapon
+    //only D4s allowed, but gets 1 more
+    for(int i=0; i<_instance->weapon.damage_dice_sides.size();i++)
+    {
+        _instance->weapon.damage_dice_sides[i] = 4;
+    }
+
+    _instance->weapon.hit_dice_sides[0] = 6;
+
+    _instance->weapon.damage_dice[0] += 1;
+    }
+
+
+void HarpyRollEquipment(Character *_instance)
+    {
+        printf("Harpy Override\n");
+        _instance->armor.RollRarity();
+        _instance->shield.RollRarity();
+        _instance->weapon.RollRarity();
+        _instance->armor.RollStats();
+        _instance->shield.RollStats();
+        _instance->weapon.RollStats();
+        _instance->shield.block += 2;
+        _instance->shield.defense += 10;
+        _instance->armor.defense *=2;
+
+        _instance->armor.name = "Tunic";
+        _instance->weapon.name = "Talons";
+        _instance->shield.name = "None";
+        //no shield
+        _instance->shield.block = 0;
+        _instance->shield.defense = 0;
+
+        //Weapon
+        //only D4s allowed, but gets 1 more
+        for(int i=0; i<_instance->weapon.damage_dice_sides.size();i++)
+        {
+            _instance->weapon.damage_dice_sides[i] = 4;
+        }
+
+        _instance->weapon.hit_dice_sides[0] = 6;
+
+        _instance->weapon.damage_dice[0] += 1;
+    }
+
 Harpy::Harpy(/*int level*/)
 {
     name = "Harpy";
+    RollEquipmentStatsOverride = &HarpyRollEquipmentStats;
+    RollEquipmentOverride = &HarpyRollEquipment;
 
     //Stats
     stats.dexterity = 20;
@@ -37,7 +101,7 @@ Harpy::Harpy(/*int level*/)
     }
 
     weapon.hit_dice_sides[0] = 6;
-    
+
     weapon.damage_dice[0] += 1;
 }
 

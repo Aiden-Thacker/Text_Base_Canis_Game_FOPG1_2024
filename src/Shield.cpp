@@ -2,6 +2,11 @@
 
 void Shield::RollStats()
 {
+    std::vector<std::string> names {"Old Wooden Shield", "Guards Shield", "Rusted Iron Shield", "Pot Lid"};
+    if(name == "");
+    {
+        name = names[RollIndex(4)];
+    }
     this->block = ((RollSum(1,this->rarity+1))+(RollIndex(1+(int)(level/5))-1));
     if(block<1)
     {
