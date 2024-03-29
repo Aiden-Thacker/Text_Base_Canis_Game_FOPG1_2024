@@ -68,6 +68,9 @@ Harpy::Harpy(/*int level*/)
     RollEquipmentStatsOverride = &HarpyRollEquipmentStats;
     RollEquipmentOverride = &HarpyRollEquipment;
 
+    loot_chance = {2/*Weapon*/,3/*Armor*/,11/*Shield*/};
+    loot_chance_dice = {10/*Weapon*/,10/*Armor*/,10/*Shield*/};
+
     //Stats
     stats.dexterity = 20;
     stats.strength = 14;

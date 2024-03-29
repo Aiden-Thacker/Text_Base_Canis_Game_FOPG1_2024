@@ -30,7 +30,7 @@ void Treasure::printRoomContents(bool treasure, bool key) {
 void Treasure::PlaceTreasure(std::vector<std::vector<char>> *map, bool treasurePlaced) 
 {
     // Determine if the room has a treasure chest
-    bool treasure = true;
+    bool treasure = hasTreasureChest();
     // If the room has a treasure chest, place it in the room
     if (treasure) {
         // Roll for the location of the treasure chest
