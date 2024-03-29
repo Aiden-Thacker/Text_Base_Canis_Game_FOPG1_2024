@@ -3,6 +3,7 @@
 #include "fogpi/Math.hpp"
 #include "Room.hpp"
 #include "Combat.hpp"
+#include "Treasure.hpp"
 #include <string>
 
 void Player::Start()
@@ -10,6 +11,10 @@ void Player::Start()
     m_character = 'P';
 }
 
+void Player::Gold(int _goldCount)
+{
+    m_goldCount += RollSum(RollIndex(m_enemy->stats.level), _goldCount);
+}
 
 
 void Player::Update()
@@ -101,6 +106,21 @@ void Player::Update()
     if (room->GetLocation(m_position + direction) == 'K')
     {
         m_keyCount++;
+        room->ClearLocation(m_position + direction);
+    }
+
+    // check for treasure
+    if (room->GetLocation(m_position + direction) == 'T')
+    {
+        Treasure::OpenTreasure(this);
+        
+        room->ClearLocation(m_position + direction);
+    }
+
+    // check for gold
+    if (room->GetLocation(m_position + direction) == 'G')
+    {
+        m_goldCount++;
         room->ClearLocation(m_position + direction);
     }
 

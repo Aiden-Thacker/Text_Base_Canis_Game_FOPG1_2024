@@ -1,4 +1,6 @@
 #include "Combat.hpp"
+#include "Room.hpp"
+#include "Entity.hpp"
 
 void StartCombat(Player *_player, Enemy *_enemy)
 {
@@ -58,6 +60,7 @@ void StartCombat(Player *_player, Enemy *_enemy)
     if(_player->health<=0)
     {
         printf("You Died :,( \n");
+        printf("Your Gold: %i\n", _player->m_goldCount);
         (*_player).room->KillPlayer();
     }
     else if(_enemy->health<=0)
@@ -71,6 +74,8 @@ void StartCombat(Player *_player, Enemy *_enemy)
             (*_player).experience -= (*_player).stats.level * 10;
             (*_player).Level_Up();
         }
+        _player->Gold(5); //amount of given to player
+        printf("Your Gold: %i\n", _player->m_goldCount);
 
         for(int i = 0; i<_enemy->loot_chance.size();i++)
         {

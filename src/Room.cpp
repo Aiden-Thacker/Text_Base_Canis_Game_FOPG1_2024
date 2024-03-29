@@ -2,6 +2,8 @@
 
 #include "Player.hpp"
 
+#include "Treasure.hpp"
+
 #include <fstream>
 #include <string>
 
@@ -126,6 +128,8 @@ void Room::Load(std::string _path)
             printf("x = %i, y = %i",x,y);
         }
     }
+    bool treasurePlaced = true;
+    Treasure::PlaceTreasure(&m_map, treasurePlaced);
 
     if(enemyexist)
     {

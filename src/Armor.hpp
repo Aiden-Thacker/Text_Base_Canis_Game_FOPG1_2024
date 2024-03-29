@@ -12,6 +12,7 @@ public:
     void SetLevel(int);
 
     void PrintArmor();
+    int weight = 1;
     int defense = 5;
 };
 
