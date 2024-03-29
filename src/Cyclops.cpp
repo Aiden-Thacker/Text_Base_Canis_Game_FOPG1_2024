@@ -58,7 +58,7 @@ Cyclops::Cyclops(/*int level*/)
     RollEquipmentStatsOverride = &CyclopsRollEquipmentStats;
     RollEquipmentOverride = &CyclopsRollEquipment;
 
-    loot_chance = {4/*Weapon*/,2/*Armor*/,3/*Shield*/};
+    loot_chance = {4/*Weapon*/,3/*Armor*/,4/*Shield*/};
     loot_chance_dice = {10/*Weapon*/,10/*Armor*/,10/*Shield*/};
 
     //Stats
