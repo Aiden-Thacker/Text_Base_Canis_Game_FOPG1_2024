@@ -95,6 +95,8 @@ void StartCombat(Player *_player, Enemy *_enemy)
                 }
             }
         }
+
+        _player->room->ClearLocation(_enemy->GetPosition());
     }
 }
 

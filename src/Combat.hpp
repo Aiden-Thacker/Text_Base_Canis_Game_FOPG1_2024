@@ -4,6 +4,7 @@
 #include "Enemy.hpp"
 #include "Character.hpp"
 #include "Dice.hpp"
+#include "Room.hpp"
 
 extern void StartCombat(Player*, Enemy*);
 extern void Attack(Character*, Character*);

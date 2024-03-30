@@ -19,11 +19,25 @@ void Player::Gold(int _goldCount)
 
 void Player::Update()
 {
+    // std::vector<Enemy> enemies;
+
+    
+    // enemies.push_back((*new Enemy()));
+    // enemies.push_back((*new Enemy()));
+    // enemies.push_back((*new Enemy()));
+    // enemies.push_back((*new Enemy()));
+    // enemies.push_back((*new Enemy()));
+    // enemies.push_back((*new Harpy()));
+    // enemies.push_back((*new Harpy()));
+    // enemies.push_back((*new Cyclops()));
+    
     if (m_enemy == nullptr)
-                    m_enemy = new Harpy(/*stats.level*/);
+        m_enemy = new Harpy();
                 
-                m_enemy->Init(4, 4);
-                m_enemy->Start();
+    m_enemy->Init(4, 4);
+    m_enemy->Start();
+    Enemy *copy = m_enemy;
+    copy->Init(0,0);
     // direction
     std::string instruction = "wasd and Enter to move";
     char directionInput = 'r';
@@ -50,7 +64,7 @@ void Player::Update()
             m_enemy->SetEquipmentLevel();
             m_enemy->RollEquipment();
             StartCombat(this, m_enemy);
-        }  
+        }
         if (directionInput == 'L')
         {
             Level_Up();
@@ -126,12 +140,18 @@ void Player::Update()
         room->OpenDoor(m_position + direction);
     }
 
+    // check for enemy
+    if(room->GetLocation(m_position + direction) == 'E')
+    {
+        StartCombat(this, (*room).m_enemy/*copy*/);
+    }
+
     // try to move
     if (room->GetLocation(m_position + direction) == ' ')
-      {
+    {
         m_position += direction;
         //Printstats(stats);
-      }  
+    }  
 }
 
 void Player::Pick_Up(Shield new_shield)
