@@ -9,8 +9,23 @@
 
 void Room::Load(std::string _path)
 {
-    // Place the treasure in the room (if not already placed)
+    std::vector<Enemy*> enemies;
 
+    
+    enemies.push_back((new Enemy()));
+    enemies.push_back((new Enemy()));
+    enemies.push_back((new Enemy()));
+    enemies.push_back((new Enemy()));
+    enemies.push_back((new Enemy()));
+    enemies.push_back((new Harpy()));
+    enemies.push_back((new Harpy()));
+    enemies.push_back((new Cyclops()));
+    for(int i = 0; i<enemies.size();i++)
+    {
+        (enemies[i])->Init(0, 0);
+        (enemies[i])->Start();
+    }
+    bool enemyexist = false;
     m_map.clear();
     m_doors.clear();
 
@@ -95,10 +110,40 @@ void Room::Load(std::string _path)
                     doorCount++;
                 }
             }
+            printf("Enemy Next\n");
+            if(m_map[y][x] == 'E')
+            {
+                printf("E found\n");
+                if (true)//m_enemy == nullptr)
+                    {
+                        //printf("Was NullPtr");
+                        m_enemy = enemies[RollIndex(enemies.size())];
+                        m_enemy->Init(x, y);
+                    }
+                printf("Enemy init complete\n");;
+                
+                enemyexist = true;
+                printf("\n\n\nEnemy Exist\n\n\n");
+            }
+            printf("x = %i, y = %i",x,y);
         }
     }
     bool treasurePlaced = true;
     Treasure::PlaceTreasure(&m_map, treasurePlaced);
+
+    if(enemyexist)
+    {
+        if(m_player->stats.level > m_enemy->stats.level)
+                {
+                    printf("Lower Level");
+                    m_enemy->Level_Up(m_player->stats.level-m_enemy->stats.level);
+                }
+                printf("Setlevel next");
+                m_enemy->SetEquipmentLevel();
+                m_enemy->RollEquipment();
+                printf("Enemy statted\n");
+    }
+    printf("Load Done\n");
 }
 
 void Room::Update()
